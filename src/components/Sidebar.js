@@ -38,13 +38,8 @@ const Sidebar = () => {
                 </IconButton>
                </div>
             </div>
-            <div className="sidebar_search">
-                <div className="sidebar_search_container">
-                    <SearchOutlined/>
-                    <input type="text" placeholder='Search or start new chat' />
-                </div>
-            </div>
-            <div className="sidebar_chats">
+            
+            <div className="sidebar_chats ">
                 <SidebarChat addchat/>
                 {
                     rooms.map(room=><SidebarChat key={room.id} id={room.id} name={room.data.name}/>)

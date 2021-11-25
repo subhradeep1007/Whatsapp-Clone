@@ -34,6 +34,8 @@ const Chat = () => {
             db.collection('rooms').doc(roomId).onSnapshot(snapshot=>(
                 setroomname(snapshot.data().name)
             ))
+            
+            
 
             db.collection('rooms')
             .doc(roomId)
@@ -52,9 +54,16 @@ const Chat = () => {
     return (
         <div className="chat">
             <div className="chat_header">
-                <Avatar src={`https://avatars.dicebear.com/api/human/b${seed}.svg`} />
-                <div className="chat_header_info">
-                    <h3>#{roomname}</h3>
+            <div className="bg-blue-100 p-1 shadow-sm border-2 border-gray-100 rounded-full">
+               <Avatar  src={`https://avatars.dicebear.com/api/human/b${seed}.svg`}/>
+            </div>
+                <div className="chat_header_info text-xl">
+                    <div className="text-xl ml-1 text-blue-900 font-extrabold">
+                    <h2 className=" inline-block  ">#</h2>
+                    <h3 className=" inline-block ml-1 ">{roomname}</h3>
+                    </div>
+                    
+                    
                     
                 </div>
                 <div className="chat_header_right">
@@ -76,10 +85,16 @@ const Chat = () => {
               
                {console.log(user.displayName)}
                {messages.map(message=>(
-                   <p className={`chat__message ${message.name===user.displayName && `chat__reciever`}`}>
-                   <span className="chat_name">{message.name}</span>
+                   <p className={`chat__message text-blue-900 ${message.name===user.displayName && `chat__reciever text-gray-900`}`}>
+                   <span className="chat_name text-blue-800">{message.name}</span>
+                   <div className=" inline-block text-blue-900 font-semibold">
                    {message.message}
-               <span className="chat_time">{new Date(message.timestamp?.toDate()).toUTCString()}</span>
+                   </div>
+                   
+               <span className="chat_time ">
+                   <div className="inline-block font-medium">
+                   {new Date(message.timestamp?.toDate()).toUTCString()}
+                       </div></span>
                </p>
                ))}
 

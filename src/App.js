@@ -14,7 +14,7 @@ import {useStateValue} from "./components/StateProvider"
 function App() {
   const [{user},dispatch]=useStateValue()
   return (
-  <div className="app">
+  <div className="app googlefont1">
     
     {!user?<Login/>:<div className="app_body">
       <Router>
